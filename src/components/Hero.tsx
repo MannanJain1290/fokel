@@ -42,7 +42,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
-            className="mt-12 flex flex-wrap gap-4"
+            className="mt-12 mb-32 flex flex-wrap gap-4"
           >
             <a
               href="#work"

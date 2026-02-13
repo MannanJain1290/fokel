@@ -12,7 +12,7 @@ const projects = [
   {
     image: work1,
     title: "Genes Lecoanet Hemant",
-    category: "Social Media & Creative Design",
+    category: "Social Media Marketing",
   },
   {
     image: work2,

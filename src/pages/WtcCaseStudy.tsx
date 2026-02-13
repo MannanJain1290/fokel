@@ -56,7 +56,7 @@ const WtcCaseStudy = () => {
             custom={2}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
           >
-            Event Marketing & Branding for the World Tunnel Congress 2026
+            Event Marketing, Branding & Technology for the World Tunnel Congress 2026 in Canada
           </motion.p>
         </div>
       </section>
@@ -105,7 +105,7 @@ const WtcCaseStudy = () => {
               Services
             </p>
             <p className="text-foreground font-medium">
-              Event Marketing, Branding, Digital Strategy, Social Media
+              Event Marketing, Branding, Web & Mobile Platform, Digital Strategy, Content & Video Production
             </p>
           </motion.div>
           <motion.div
@@ -118,7 +118,7 @@ const WtcCaseStudy = () => {
             <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-4">
               Timeline
             </p>
-            <p className="text-foreground font-medium">2024 — Ongoing</p>
+            <p className="text-foreground font-medium">2025 — Ongoing</p>
           </motion.div>
         </div>
       </section>
@@ -134,10 +134,10 @@ const WtcCaseStudy = () => {
             custom={0}
           >
             <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-6">
-              The Challenge
+              The Background
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-tight">
-              Building global awareness for a landmark engineering congress
+              Scaling a proven success to new heights
               <span className="text-accent">.</span>
             </h2>
           </motion.div>
@@ -150,11 +150,13 @@ const WtcCaseStudy = () => {
             className="flex items-end"
           >
             <p className="text-muted-foreground leading-relaxed text-lg">
-              The World Tunnel Congress needed a comprehensive digital marketing
-              strategy to attract international delegates, sponsors, and media
-              attention. The challenge was positioning the 2026 edition as a
-              must-attend event in the tunnelling and underground infrastructure
-              industry while reaching a diverse, global audience.
+              After the success of World Tunnel Congress 2025 in Sweden, the
+              ITA-WTC committee re-engaged us to support the 2026 edition in
+              Canada. With a 23% increase in total entries compared to the
+              previous year, the objective was clear: scale visibility,
+              participation, and engagement even further. Our team led both
+              marketing and technology initiatives in close collaboration with
+              the on-ground event management team in Canada.
             </p>
           </motion.div>
         </div>
@@ -181,22 +183,26 @@ const WtcCaseStudy = () => {
             custom={1}
             className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-12"
           >
-            A multi-channel strategy built for impact
+            Strategic branding, digital outreach & a cohesive tech ecosystem
             <span className="text-accent">.</span>
           </motion.h2>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-2 gap-10">
             {[
               {
-                title: "Brand Positioning",
-                desc: "Developed a cohesive visual identity and messaging framework that positioned WTC 2026 as the premier global tunnelling event.",
+                title: "Brand Refresh",
+                desc: "Development of a new logo and a redesigned website to elevate the event's global positioning and create a distinctive identity for the 2026 edition.",
               },
               {
-                title: "Digital Campaigns",
-                desc: "Launched targeted social media and email campaigns across LinkedIn, Instagram, and industry platforms to drive registrations and engagement.",
+                title: "LinkedIn Growth Strategy",
+                desc: "Increased posting frequency on the official ITA LinkedIn page by 3x, resulting in a steady follower growth of 1.5K and an average CTR of 0.54%.",
               },
               {
-                title: "Content Strategy",
-                desc: "Created compelling content including speaker spotlights, industry insights, and event teasers to maintain momentum leading up to the congress.",
+                title: "Content & Collateral",
+                desc: "Creation of offline marketing collaterals and video content for the summit and YouTube distribution, ensuring consistent brand presence across all touchpoints.",
+              },
+              {
+                title: "Integrated Digital Platform",
+                desc: "Delivery of a unified web and mobile platform for attendees, including a seamless digital badge system for an enhanced event experience.",
               },
             ].map((item, i) => (
               <motion.div
@@ -244,10 +250,10 @@ const WtcCaseStudy = () => {
         </motion.h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { number: "150%", label: "Social Media Growth" },
-            { number: "50K+", label: "Campaign Reach" },
-            { number: "3x", label: "Engagement Rate" },
-            { number: "20+", label: "Countries Reached" },
+            { number: "23%", label: "Increase in Entries" },
+            { number: "3x", label: "LinkedIn Post Frequency" },
+            { number: "1.5K", label: "New Followers Gained" },
+            { number: "0.54%", label: "Average CTR" },
           ].map((stat, i) => (
             <motion.div
               key={stat.label}

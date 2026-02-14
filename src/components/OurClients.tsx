@@ -19,7 +19,7 @@ const OurClients = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground text-center mb-16">
-          Our Clients
+          Trusted by
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
           {clients.map((client, i) => (

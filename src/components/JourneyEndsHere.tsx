@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const marqueeItems = [
   "Your", "search", "for", "a", "digital", "agency", "ends", "here..."
@@ -63,10 +63,10 @@ const JourneyEndsHere = () => {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:opacity-90 transition-opacity"
+                className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-full hover:opacity-90 transition-opacity inline-flex items-center gap-2"
               >
                 Get in Touch
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href="#work"

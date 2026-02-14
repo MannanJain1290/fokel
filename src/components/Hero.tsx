@@ -82,14 +82,14 @@ const Hero = () => {
         >
           <a
             href="#work"
-            className="bg-accent text-accent-foreground px-8 py-4 text-xs font-heading font-semibold uppercase tracking-[0.2em] hover:opacity-90 transition-opacity inline-flex items-center gap-3"
+            className="bg-accent text-accent-foreground px-10 py-5 text-xs font-heading font-semibold uppercase tracking-[0.2em] hover:opacity-90 transition-opacity inline-flex items-center gap-3 rounded-full"
           >
             View Our Work
             <ArrowDown className="w-3.5 h-3.5" />
           </a>
           <a
             href="#about"
-            className="border border-foreground/20 text-foreground px-8 py-4 text-xs font-heading font-semibold uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-colors duration-300"
+            className="border border-foreground/20 text-foreground px-10 py-5 text-xs font-heading font-semibold uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-colors duration-300 rounded-full"
           >
             Learn More
           </a>

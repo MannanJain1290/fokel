@@ -2,9 +2,6 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 
-const marqueeItems = [
-  "Your", "search", "for", "a", "digital", "agency", "ends", "here..."
-];
 
 const JourneyEndsHere = () => {
   const ref = useRef(null);
@@ -12,25 +9,6 @@ const JourneyEndsHere = () => {
 
   return (
     <section className="bg-primary text-primary-foreground overflow-hidden" ref={ref}>
-      {/* Giant scrolling marquee text */}
-      <div className="py-12 md:py-16 overflow-hidden border-b border-primary-foreground/10">
-        <div className="animate-marquee flex whitespace-nowrap items-center">
-          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((word, i) => (
-            <span
-              key={i}
-              className="flex-shrink-0 mx-2 md:mx-3 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight uppercase"
-              style={{
-                WebkitTextStroke: "1.5px hsl(var(--primary-foreground) / 0.4)",
-                WebkitTextFillColor: word === "ends" || word === "here..."
-                  ? "hsl(var(--accent))"
-                  : "transparent",
-              }}
-            >
-              {word}
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* CTA content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20 md:py-28">

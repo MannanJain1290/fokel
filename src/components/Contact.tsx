@@ -46,9 +46,9 @@ const Contact = () => {
         >
           <a
             href="mailto:hello@fokel.com"
-            className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-10 py-5 text-xs font-heading font-semibold uppercase tracking-[0.2em] hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-12 py-5 text-xs font-heading font-semibold uppercase tracking-[0.2em] hover:opacity-90 transition-opacity rounded-full"
           >
-            Start a Project
+            Let's Talk
             <ArrowUpRight className="w-4 h-4" />
           </a>
         </motion.div>

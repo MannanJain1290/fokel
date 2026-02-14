@@ -5,7 +5,6 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
@@ -44,9 +43,9 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
-            className="bg-accent text-accent-foreground px-6 py-2.5 text-[11px] font-heading font-semibold uppercase tracking-[0.15em] hover:opacity-90 transition-opacity"
+            className="bg-accent text-accent-foreground px-8 py-3 text-[11px] font-heading font-semibold uppercase tracking-[0.15em] hover:opacity-90 transition-opacity rounded-full"
           >
-            Get in Touch
+            Let's Talk
           </a>
         </div>
 
@@ -98,9 +97,9 @@ const Navbar = () => {
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="bg-accent text-accent-foreground px-6 py-3 text-sm font-heading font-semibold uppercase tracking-wider text-center"
+                className="bg-accent text-accent-foreground px-8 py-4 text-sm font-heading font-semibold uppercase tracking-wider text-center rounded-full"
               >
-                Get in Touch
+                Let's Talk
               </a>
             </div>
           </motion.div>

@@ -16,20 +16,27 @@ const clients = [
 
 const Marquee = () => {
   return (
-    <section className="bg-background py-6 overflow-hidden">
-      <div className="animate-marquee flex whitespace-nowrap items-center">
-        {[...clients, ...clients, ...clients, ...clients].map((client, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
-          >
-            <img
-              src={client.src}
-              alt={client.alt}
-              className="h-8 md:h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-darken dark:mix-blend-lighten"
-            />
-          </div>
-        ))}
+    <section className="bg-background border-y border-border">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-8">
+        <p className="text-sm font-medium tracking-[0.3em] uppercase text-accent mb-8">
+          Trusted By
+        </p>
+      </div>
+      <div className="py-10 overflow-hidden">
+        <div className="animate-marquee flex whitespace-nowrap items-center">
+          {[...clients, ...clients, ...clients, ...clients].map((client, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center"
+            >
+              <img
+                src={client.src}
+                alt={client.alt}
+                className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 mix-blend-darken dark:mix-blend-lighten"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

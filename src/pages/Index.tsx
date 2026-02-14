@@ -9,6 +9,7 @@ import Testimonials from "@/components/Testimonials";
 import JourneyEndsHere from "@/components/JourneyEndsHere";
 import FAQ from "@/components/FAQ";
 import Newsletter from "@/components/Newsletter";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -17,14 +18,15 @@ const Index = () => {
       <Navbar />
       <Hero />
       <About />
-      <Marquee />
       <Services />
       <StoryInNumbers />
+      <Marquee />
       <FeaturedWork />
       <Testimonials />
       <JourneyEndsHere />
       <FAQ />
       <Newsletter />
+      <Contact />
       <Footer />
     </div>
   );

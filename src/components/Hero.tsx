@@ -51,7 +51,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative aspect-[9/16] h-[70vh] max-h-[600px] w-auto mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-foreground/10"
+            className="relative aspect-[9/16] max-h-[75vh] w-full max-w-sm lg:max-w-md mx-auto rounded-3xl overflow-hidden shadow-2xl"
           >
             <video
               src={heroVideo}

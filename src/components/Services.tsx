@@ -60,7 +60,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-              className="group border-t border-border py-10 lg:py-14 flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-16 cursor-pointer hover:bg-background/50 transition-colors px-4 -mx-4"
+              className="group border-t border-border py-6 lg:py-10 flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-16 cursor-pointer hover:bg-background/50 transition-colors px-4 -mx-4"
             >
               <span className="text-sm text-muted-foreground font-medium tracking-wider">
                 {service.number}

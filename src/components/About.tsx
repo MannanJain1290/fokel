@@ -7,7 +7,7 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-16 bg-background" ref={ref}>
+    <section id="about" className="py-24 bg-primary text-primary-foreground" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left */}
@@ -24,7 +24,7 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-foreground"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight"
             >
               Bold ideas,
               <br />
@@ -40,7 +40,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+              className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed"
             >
               At Fokel, our mission is to bring your business into the market focus 
               with a bold, disruptive edge. We combine strategic thinking with creative 
@@ -51,7 +51,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed"
+              className="mt-6 text-lg md:text-xl text-primary-foreground/80 leading-relaxed"
             >
               Our vision is to redefine the digital landscape by setting a new gold standard 
               for B2B growth, where every brand we touch becomes the undisputed authority 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -12,28 +13,34 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
-        <a href="#" className="text-2xl font-bold tracking-tight text-foreground uppercase">
+        {/* Logo */}
+        <a href="#" className="text-xl font-bold tracking-tight text-foreground">
           Fokel<span className="text-accent">.</span>
         </a>
 
-        {/* Desktop */}
+        {/* Desktop nav links */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium tracking-wide text-muted-foreground hover:text-foreground transition-colors uppercase"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.label}
             </a>
           ))}
+        </div>
+
+        {/* CTA button - red/accent like onething */}
+        <div className="hidden md:flex items-center gap-6">
           <a
             href="#contact"
-            className="bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold uppercase tracking-wider hover:opacity-90 transition-opacity"
+            className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-full hover:opacity-90 transition-opacity inline-flex items-center gap-2"
           >
-            Let's Talk
+            Get in Touch
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 
@@ -73,7 +80,7 @@ const Navbar = () => {
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-foreground uppercase tracking-wide"
+                  className="text-lg font-medium text-foreground"
                 >
                   {link.label}
                 </a>
@@ -81,9 +88,10 @@ const Navbar = () => {
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold uppercase tracking-wider text-center"
+                className="bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold rounded-full text-center inline-flex items-center justify-center gap-2"
               >
-                Let's Talk
+                Get in Touch
+                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           </motion.div>

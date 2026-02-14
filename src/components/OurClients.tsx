@@ -16,7 +16,7 @@ const clients = [
 
 const OurClients = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-10 bg-background">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground text-center mb-16">
           Trusted by

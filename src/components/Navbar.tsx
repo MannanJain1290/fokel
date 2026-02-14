@@ -20,8 +20,8 @@ const Navbar = () => {
           Fokel<span className="text-accent">.</span>
         </a>
 
-        {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-10">
+        {/* Desktop nav links + CTA together */}
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -31,10 +31,6 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
-        </div>
-
-        {/* CTA button - red/accent like onething */}
-        <div className="hidden md:flex items-center gap-6">
           <a
             href="#contact"
             className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-full hover:opacity-90 transition-opacity inline-flex items-center gap-2"

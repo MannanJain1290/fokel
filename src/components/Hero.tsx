@@ -5,7 +5,7 @@ import heroVideo from "@/assets/hero-video.mp4";
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center relative bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 pt-24 pb-16">
+      <div className="max-w-7xl mx-auto w-full px-4 lg:px-6 pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left — Content */}
           <div className="flex flex-col gap-8">

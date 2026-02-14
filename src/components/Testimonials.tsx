@@ -38,7 +38,7 @@ const Testimonials = () => {
   const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
 
   return (
-    <section className="py-24 md:py-32 bg-background" ref={ref}>
+    <section className="py-24 md:py-32 bg-primary text-primary-foreground" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ const Testimonials = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-foreground mb-16"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-primary-foreground mb-16"
         >
           What our clients
           <br />
@@ -65,16 +65,16 @@ const Testimonials = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="relative"
         >
-          <div className="border border-border bg-secondary/30 p-8 md:p-14 lg:p-20 min-h-[320px] flex flex-col justify-between">
+          <div className="border border-primary-foreground/10 bg-primary-foreground/5 p-8 md:p-14 lg:p-20 min-h-[320px] flex flex-col justify-between">
             <Quote className="w-10 h-10 text-accent mb-8" />
-            <p className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed text-foreground mb-10">
+            <p className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed text-primary-foreground mb-10">
               "{testimonials[current].quote}"
             </p>
             <div>
-              <p className="text-lg font-bold text-foreground">
+              <p className="text-lg font-bold text-primary-foreground">
                 {testimonials[current].name}
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-primary-foreground/60">
                 {testimonials[current].role}
               </p>
             </div>
@@ -83,19 +83,19 @@ const Testimonials = () => {
           <div className="flex items-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-12 h-12 border border-border flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors"
+              className="w-12 h-12 border border-primary-foreground/20 flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={next}
-              className="w-12 h-12 border border-border flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors"
+              className="w-12 h-12 border border-primary-foreground/20 flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors"
               aria-label="Next slide"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
-            <span className="ml-4 text-sm text-muted-foreground font-medium">
+            <span className="ml-4 text-sm text-primary-foreground/60 font-medium">
               {String(current + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
             </span>
           </div>

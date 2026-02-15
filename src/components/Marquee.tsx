@@ -11,7 +11,7 @@ const clients = [
   { src: inventeron, alt: "Inventeron Technologies" },
   { src: onsurity, alt: "Onsurity" },
   { src: homelane, alt: "HomeLane" },
-  { src: hmo, alt: "HMO Architects" },
+  { src: homelane, alt: "HomeLane.com" },
   { src: genes, alt: "Genes Lecoanet Hemant" },
   { src: wtc, alt: "WTC 2026" },
 ];

@@ -46,7 +46,7 @@ const OurApproach = () => {
 
   return (
     <section className="bg-primary text-primary-foreground overflow-hidden" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-4 pb-16 md:pt-6 md:pb-24">
         {/* Section label with animated line */}
         <div className="flex items-center gap-4 mb-6">
           <motion.div

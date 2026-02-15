@@ -80,7 +80,7 @@ const Marquee = () => {
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-40 hover:opacity-90 transition-all duration-500 ease-out"
+                  className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-60 hover:opacity-100"
                 />
               </div>
             ))}
@@ -95,7 +95,7 @@ const Marquee = () => {
                 <img
                   src={client.src}
                   alt=""
-                  className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-40 hover:opacity-90 transition-all duration-500 ease-out"
+                  className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-60 hover:opacity-100"
                 />
               </div>
             ))}

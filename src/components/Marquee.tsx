@@ -1,19 +1,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import inventeron from "@/assets/clients/inventeron.jpg";
-import onsurity from "@/assets/clients/onsurity.jpg";
-import homelane from "@/assets/clients/homelane.webp";
-import hmo from "@/assets/clients/hmo.png";
-import genes from "@/assets/clients/genes.png";
-import wtc from "@/assets/clients/wtc.webp";
+import inventeron from "@/assets/clients/inventeron.png";
+import onsurity from "@/assets/clients/onsurity.png";
+import homelane from "@/assets/clients/homelane.png";
+import genes from "@/assets/clients/genes.webp";
+import wtc from "@/assets/clients/wtc.png";
+import bestdoc from "@/assets/clients/bestdoc.webp";
 
 const clients = [
-  { src: inventeron, alt: "Inventeron Technologies" },
-  { src: onsurity, alt: "Onsurity" },
-  { src: homelane, alt: "HomeLane" },
-  { src: homelane, alt: "HomeLane.com" },
-  { src: genes, alt: "Genes Lecoanet Hemant" },
-  { src: wtc, alt: "WTC 2026" },
+  { src: inventeron, alt: "Inventeron Technologies", height: "h-10 md:h-12" },
+  { src: onsurity, alt: "Onsurity", height: "h-8 md:h-10" },
+  { src: homelane, alt: "HomeLane.com", height: "h-10 md:h-12" },
+  { src: genes, alt: "Genes Lecoanet Hemant", height: "h-6 md:h-8" },
+  { src: wtc, alt: "WTC 2026", height: "h-10 md:h-12" },
+  { src: bestdoc, alt: "BestDoc", height: "h-7 md:h-9" },
 ];
 
 const Marquee = () => {
@@ -75,12 +75,12 @@ const Marquee = () => {
             {clients.map((client, i) => (
               <div
                 key={`${client.alt}-${i}`}
-                className="flex-shrink-0 flex items-center justify-center px-2"
+                className="flex-shrink-0 flex items-center justify-center px-2 h-14 md:h-16"
               >
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-60 hover:opacity-100"
+                  className={`${client.height} w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-60 hover:opacity-100`}
                 />
               </div>
             ))}
@@ -90,12 +90,12 @@ const Marquee = () => {
             {clients.map((client, i) => (
               <div
                 key={`dup-${client.alt}-${i}`}
-                className="flex-shrink-0 flex items-center justify-center px-2"
+                className="flex-shrink-0 flex items-center justify-center px-2 h-14 md:h-16"
               >
                 <img
                   src={client.src}
                   alt=""
-                  className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-60 hover:opacity-100"
+                  className={`${client.height} w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-60 hover:opacity-100`}
                 />
               </div>
             ))}

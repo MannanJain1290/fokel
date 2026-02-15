@@ -59,7 +59,7 @@ const AnimatedCounter = ({
   }, [isInView, target, duration, delay]);
 
   return (
-    <div ref={ref} className="flex items-center text-5xl md:text-7xl lg:text-8xl">
+    <div ref={ref} className="flex items-center text-4xl md:text-6xl lg:text-7xl">
       <span className="font-bold text-foreground tabular-nums">
         {count}
       </span>

@@ -9,7 +9,7 @@ import bestdoc from "@/assets/clients/bestdoc.webp";
 
 const clients = [
   { src: inventeron, alt: "Inventeron Technologies", height: "h-20 md:h-24" },
-  { src: onsurity, alt: "Onsurity", height: "h-16 md:h-20" },
+  { src: onsurity, alt: "Onsurity", height: "h-20 md:h-24" },
   { src: homelane, alt: "HomeLane.com", height: "h-20 md:h-24" },
   { src: genes, alt: "Genes Lecoanet Hemant", height: "h-8 md:h-10" },
   { src: wtc, alt: "WTC 2026", height: "h-10 md:h-12" },

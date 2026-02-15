@@ -23,7 +23,7 @@ const JourneyEndsHere = () => {
               <br />
               digital excellence
               <br />
-              <span className="text-accent">starts now</span>.
+              <span className="text-accent italic font-normal">starts now</span>.
             </h2>
           </motion.div>
 

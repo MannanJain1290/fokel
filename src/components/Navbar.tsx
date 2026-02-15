@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -124,21 +125,12 @@ const Navbar = () => {
         {/* Logo */}
         <motion.a 
           href="#" 
-          className="text-xl font-bold tracking-tight text-foreground relative group"
+          className="relative group"
           variants={linkVariants}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
         >
-          <span style={{ fontFamily: "var(--font-heading)" }}>
-            Fokel<span className="text-accent">.</span>
-          </span>
-          {/* Logo hover effect */}
-          <motion.span
-            className="absolute -bottom-1 left-0 h-[2px] bg-accent"
-            initial={{ width: 0 }}
-            whileHover={{ width: "100%" }}
-            transition={{ duration: 0.3 }}
-          />
+          <img src={logo} alt="Fokel" className="h-8 md:h-10 w-auto" />
         </motion.a>
 
         {/* Desktop nav links + CTA together */}

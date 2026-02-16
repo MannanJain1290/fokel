@@ -171,7 +171,7 @@ const HomelaneCaseStudy = () => {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1}>
             <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-4">Services</p>
             <p className="text-foreground font-medium">
-              Google SEO, Keyword Optimisation, Content Strategy, Vlog Production, On-Page & Technical SEO
+              Google SEO, Keyword Optimisation, Content Strategy, Vlog Production, On-Page & Technical SEO, Website Creation
             </p>
           </motion.div>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={2}>

@@ -15,7 +15,7 @@ const Contact = () => {
   const whatsappNumber = "919876543210"; // Update with actual number
   const whatsappMessage = encodeURIComponent(`Hi, I'm ${name || "interested"}. I'd like to start a project.`);
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-  const emailLink = `mailto:info@fokelworks.com?subject=New Project Inquiry&body=Hi, I'm ${encodeURIComponent(name || "interested")}. I'd like to discuss a project.`;
+  const emailLink = `https://mail.google.com/mail/?view=cm&to=info@fokelworks.com&su=${encodeURIComponent("New Project Inquiry")}&body=${encodeURIComponent("Hi, I'd like to discuss a project.")}`;
 
   return (
     <section

@@ -151,22 +151,8 @@ const Contact = () => {
                   className="text-xl font-bold text-primary-foreground mb-6"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  Let's get started
+                  Reach out to us
                 </h3>
-
-                {/* Name input */}
-                <div className="mb-6">
-                  <label className="block text-sm text-primary-foreground/70 mb-2 text-left">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter your name"
-                    className="w-full bg-primary-foreground/10 border border-primary-foreground/20 rounded-full px-5 py-3 text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none focus:border-accent transition-colors"
-                  />
-                </div>
 
                 {/* Action buttons */}
                 <div className="flex flex-col gap-3">

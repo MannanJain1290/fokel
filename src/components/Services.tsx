@@ -73,7 +73,7 @@ const Services = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-secondary overflow-hidden" ref={ref}>
+    <section id="services" className="py-16 md:py-24 bg-primary text-primary-foreground overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -101,7 +101,7 @@ const Services = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="overflow-hidden mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-[-0.02em] text-primary-foreground">
             Services<span className="text-accent">.</span>
           </h2>
         </motion.div>
@@ -121,13 +121,13 @@ const Services = () => {
                 viewport={{ once: true }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative bg-background border border-border rounded-2xl p-6 lg:p-8 flex flex-col justify-between min-h-[280px] overflow-hidden cursor-pointer"
+                className="group relative bg-primary-foreground/5 border border-primary-foreground/10 rounded-2xl p-6 lg:p-8 flex flex-col justify-between min-h-[280px] overflow-hidden cursor-pointer"
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
               >
                 <motion.div
                   className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 rounded-2xl`}
-                  animate={{ opacity: isHovered ? 0.08 : 0 }}
+                  animate={{ opacity: isHovered ? 0.1 : 0 }}
                   transition={{ duration: 0.3 }}
                 />
 
@@ -153,7 +153,7 @@ const Services = () => {
                       className="w-5 h-5 transition-colors duration-300"
                       style={{
                         color: isHovered
-                          ? "hsl(var(--background))"
+                          ? "hsl(var(--primary))"
                           : "hsl(var(--accent))",
                       }}
                     />
@@ -164,13 +164,13 @@ const Services = () => {
                     animate={{
                       color: isHovered
                         ? "hsl(var(--accent))"
-                        : "hsl(var(--foreground))",
+                        : "hsl(var(--primary-foreground))",
                     }}
                     transition={{ duration: 0.3 }}
                   >
                     {service.title}
                   </motion.h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-primary-foreground/60 leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -179,7 +179,7 @@ const Services = () => {
                   className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-accent/10"
                   animate={{
                     scale: isHovered ? 1.5 : 1,
-                    opacity: isHovered ? 0.15 : 0,
+                    opacity: isHovered ? 0.2 : 0,
                   }}
                   transition={{ duration: 0.4 }}
                 />

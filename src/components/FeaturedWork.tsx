@@ -1,0 +1,351 @@
+import { motion, useInView, useSpring, useTransform, useMotionValue } from "framer-motion";
+import { useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+import work1 from "@/assets/work-1.jpg";
+import work2 from "@/assets/work-2.jpg";
+import work3 from "@/assets/work-homelane.png";
+import work4 from "@/assets/work-4.png";
+
+const projects = [
+  {
+    image: work3,
+    title: "HomeLane.com",
+    description:
+      "SEO-driven content strategy and keyword optimisation to dominate Google rankings for India's leading home interiors platform.",
+    tags: ["Google SEO", "Content Strategy"],
+    link: "/work/homelane",
+    color: "from-emerald-500/80",
+    bgColor: "#ecfdf5",
+  },
+  {
+    image: work2,
+    title: "ITA-AITES WTC 2026",
+    description:
+      "Event marketing, branding and digital strategy for the World Tunnel Congress 2026.",
+    tags: ["Event Marketing", "Branding"],
+    link: "/work/wtc-2026",
+    color: "from-blue-500/80",
+    bgColor: "#eff6ff",
+  },
+  {
+    image: work1,
+    title: "Genes Lecoanet Hemant",
+    description:
+      "Social media marketing and brand storytelling for India's premier luxury fashion house.",
+    tags: ["Social Media", "Marketing"],
+    link: "/work/genes-lecoanet-hemant",
+    color: "from-purple-500/80",
+    bgColor: "#faf5ff",
+  },
+  {
+    image: work4,
+    title: "Blue Leopard Media",
+    description:
+      "Complete brand identity and web design for an emerging media company.",
+    tags: ["Branding", "Website"],
+    link: "/work/blue-leopard-media",
+    color: "from-orange-500/80",
+    bgColor: "#fff7ed",
+  },
+];
+
+const FeaturedWork = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
+  const getBgColor = () => {
+    if (hoveredIndex === null) return "hsl(var(--background))";
+    return projects[hoveredIndex].bgColor;
+  };
+
+  return (
+    <motion.section
+      id="work"
+      className="relative py-16 md:py-24 overflow-hidden"
+      ref={ref}
+      animate={{ backgroundColor: getBgColor() }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-4 mb-6"
+        >
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 40 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="h-[2px] bg-accent"
+          />
+          <p className="text-sm font-medium tracking-[0.3em] uppercase text-accent">
+            Selected Projects
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="overflow-hidden mb-10 md:mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-[-0.03em] text-foreground">
+            Featured Work<span className="text-accent">.</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {projects.map((project, i) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={i}
+              isInView={isInView}
+              onHoverStart={() => setHoveredIndex(i)}
+              onHoverEnd={() => setHoveredIndex(null)}
+              activeCard={activeCard}
+              setActiveCard={setActiveCard}
+            />
+          ))}
+        </div>
+      </div>
+    </motion.section>
+  );
+};
+
+const ProjectCard = ({
+  project,
+  index,
+  isInView,
+  onHoverStart,
+  onHoverEnd,
+  activeCard,
+  setActiveCard,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+  isInView: boolean;
+  onHoverStart: () => void;
+  onHoverEnd: () => void;
+  activeCard: number | null;
+  setActiveCard: (index: number | null) => void;
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isActive = activeCard === index;
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [5, -5]), {
+    stiffness: 300,
+    damping: 30,
+  });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-5, 5]), {
+    stiffness: 300,
+    damping: 30,
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set((e.clientX - centerX) / rect.width);
+    y.set((e.clientY - centerY) / rect.height);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    onHoverStart();
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    onHoverEnd();
+    x.set(0);
+    y.set(0);
+  };
+
+  const handleTouchStart = () => {
+    setActiveCard(isActive ? null : index);
+  };
+
+  const projectNumber = String(index + 1).padStart(2, "0");
+
+  const cardContent = (
+    <>
+      <motion.div
+        className="relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3] bg-secondary"
+        style={{
+          rotateX: isHovered ? rotateX : 0,
+          rotateY: isHovered ? rotateY : 0,
+          transformStyle: "preserve-3d",
+        }}
+        animate={{
+          scale: isActive ? 0.98 : 1,
+          boxShadow: isHovered || isActive
+            ? "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 30px rgba(var(--accent-rgb, 139, 92, 246), 0.15)"
+            : "0 10px 30px -10px rgba(0, 0, 0, 0.1)",
+        }}
+        transition={{ duration: 0.4 }}
+      >
+        <motion.img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+          animate={{
+            scale: isHovered || isActive ? 1.1 : 1,
+          }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+        />
+
+        <motion.div
+          className={`absolute inset-0 bg-gradient-to-t ${project.color} to-transparent`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered || isActive ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+        />
+
+        <motion.div
+          className="absolute inset-0 bg-black/50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered || isActive ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+        />
+
+        <motion.div
+          className="absolute inset-0 flex flex-col justify-end p-4 md:p-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered || isActive ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.p
+            className="text-white/90 text-sm leading-relaxed line-clamp-2"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{
+              y: isHovered || isActive ? 0 : 20,
+              opacity: isHovered || isActive ? 1 : 0,
+            }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            {project.description}
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          className="absolute top-3 md:top-5 right-3 md:right-5"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{
+            opacity: isHovered || isActive ? 1 : 0,
+            scale: isHovered || isActive ? 1 : 0.5,
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+            <ArrowUpRight className="w-4 md:w-5 h-4 md:h-5 text-foreground" />
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="absolute top-3 md:top-5 left-3 md:left-5 flex flex-wrap gap-1.5 md:gap-2 max-w-[70%]"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: isHovered || isActive ? 1 : 0, x: isHovered || isActive ? 0 : -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] md:text-xs font-medium tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm px-2 md:px-3 py-1 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-1 bg-accent origin-left"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isActive ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+        />
+      </motion.div>
+
+      <div className="mt-4 md:mt-6 flex items-start justify-between">
+        <motion.div
+          className="flex-1 pr-4"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
+          <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-[-0.02em]">
+            {project.title}
+          </h3>
+          <motion.div
+            className="h-[2px] bg-accent mt-2 origin-left"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 + 0.15 }}
+            style={{ width: "50%" }}
+          />
+        </motion.div>
+
+        <motion.span
+          className="text-sm font-medium text-muted-foreground"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.1 + 0.2 }}
+        >
+          <span className="text-accent font-bold">{projectNumber}</span>
+        </motion.span>
+      </div>
+
+      <p className="mt-2 md:hidden text-sm text-muted-foreground line-clamp-2">
+        {project.description}
+      </p>
+    </>
+  );
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.1,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
+      className="group cursor-pointer"
+      style={{ perspective: 1000 }}
+    >
+      {project.link ? (
+        <Link to={project.link} className="block">
+          {cardContent}
+        </Link>
+      ) : (
+        <div className="block">
+          {cardContent}
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
+export default FeaturedWork;

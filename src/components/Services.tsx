@@ -4,9 +4,7 @@ import {
   Megaphone, 
   Globe, 
   Target, 
-  Palette,
-  Search,
-  BarChart
+  Palette
 } from "lucide-react";
 
 const services = [
@@ -37,20 +35,6 @@ const services = [
       "Comprehensive brand development — from naming and visual identity to messaging frameworks that resonate with your target audience.",
     icon: Palette,
     color: "from-emerald-500 to-teal-500",
-  },
-  {
-    title: "SEO & Performance",
-    description:
-      "Technical SEO and performance optimization to ensure your website ranks higher and loads faster for better user experience.",
-    icon: Search,
-    color: "from-amber-500 to-orange-500",
-  },
-  {
-    title: "Analytics & Insights",
-    description:
-      "Deep data analytics and insights to measure performance, optimize campaigns, and make informed business decisions.",
-    icon: BarChart,
-    color: "from-rose-500 to-red-500",
   },
 ];
 
@@ -106,7 +90,7 @@ const Services = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => {
             const Icon = service.icon;
             const isHovered = hoveredIndex === i;

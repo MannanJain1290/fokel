@@ -1,13 +1,20 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+import homelane from "@/assets/clients/homelane.png";
+import wtc from "@/assets/clients/wtc.png";
+import genes from "@/assets/clients/genes.png";
+import onsurity from "@/assets/clients/onsurity.png";
+import inventeron from "@/assets/clients/inventeron.png";
+import hmo from "@/assets/clients/hmo.png";
+
 const clients = [
-  { src: "/clients/homelane.png", alt: "HomeLane", height: "h-8 md:h-10" },
-  { src: "/clients/wtc.png", alt: "WTC", height: "h-6 md:h-8" },
-  { src: "/clients/genes.png", alt: "Genes", height: "h-6 md:h-8" },
-  { src: "/clients/onsurity.png", alt: "Onsurity", height: "h-6 md:h-8" },
-  { src: "/clients/inventeron.png", alt: "Inventeron", height: "h-6 md:h-8" },
-  { src: "/clients/hmo.png", alt: "HMO Architects", height: "h-6 md:h-8" },
+  { src: homelane, alt: "HomeLane", height: "h-8 md:h-10" },
+  { src: wtc, alt: "WTC", height: "h-6 md:h-8" },
+  { src: genes, alt: "Genes", height: "h-6 md:h-8" },
+  { src: onsurity, alt: "Onsurity", height: "h-6 md:h-8" },
+  { src: inventeron, alt: "Inventeron", height: "h-6 md:h-8" },
+  { src: hmo, alt: "HMO Architects", height: "h-6 md:h-8" },
 ];
 
 const Marquee = () => {

@@ -48,29 +48,16 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="grid md:grid-cols-2 gap-8 md:gap-16"
+          className="max-w-2xl"
         >
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-primary-foreground mb-6 tracking-tight">
-              Our Mission
-            </h3>
-            <p className="text-lg text-primary-foreground/70 leading-relaxed">
-              At Fokel, our mission is to bring your business into the market focus 
-              with a bold, disruptive edge. We combine strategic thinking with creative 
-              excellence to craft digital experiences that captivate audiences and drive 
-              measurable results.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-primary-foreground mb-6 tracking-tight">
-              Our Vision
-            </h3>
-            <p className="text-lg text-primary-foreground/70 leading-relaxed">
-              Our vision is to redefine the digital landscape by setting a new gold standard 
-              for B2B growth, where every brand we touch becomes the undisputed authority 
-              in its niche.
-            </p>
-          </div>
+          <p className="text-lg md:text-xl text-primary-foreground/70 leading-relaxed">
+            At Fokel, our mission is to bring your business into the market focus 
+            with a bold, disruptive edge. We combine strategic thinking with creative 
+            excellence to craft digital experiences that captivate audiences and drive 
+            measurable results. Our vision is to redefine the digital landscape by setting 
+            a new gold standard for B2B growth, where every brand we touch becomes the 
+            undisputed authority in its niche.
+          </p>
         </motion.div>
       </div>
     </section>

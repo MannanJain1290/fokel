@@ -18,19 +18,17 @@ const Index = () => {
     <div className="bg-background">
       <Navbar />
       <Hero />
-<<<<<<< HEAD
       <Marquee />
       <StoryInNumbers />
       <About />
       <OurApproach />
       <Services />
-=======
+
       <About />
       <OurApproach />
       <Services />
       <Marquee />
       <StoryInNumbers />
->>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
       
       <FeaturedWork />
       <Testimonials />

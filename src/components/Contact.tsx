@@ -1,12 +1,23 @@
+<<<<<<< HEAD
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import { MessageCircle, Mail } from "lucide-react";
+=======
+import { motion, useInView, useReducedMotion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { ArrowUpRight, MessageCircle, Mail, X } from "lucide-react";
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const prefersReducedMotion = useReducedMotion();
+<<<<<<< HEAD
   const [name] = useState("");
+=======
+  const [showForm, setShowForm] = useState(false);
+  const [name, setName] = useState("");
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
 
   const duration = prefersReducedMotion ? 0 : 0.8;
   const delay = (d: number) => (prefersReducedMotion ? 0 : d);
@@ -87,13 +98,18 @@ const Contact = () => {
           niche.
         </motion.p>
 
+<<<<<<< HEAD
         {/* Contact Options */}
+=======
+        {/* CTA Button / Form */}
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration, delay: delay(0.4) }}
           className="mt-12 flex justify-center"
         >
+<<<<<<< HEAD
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -127,6 +143,76 @@ const Contact = () => {
               </a>
             </div>
           </motion.div>
+=======
+          <AnimatePresence mode="wait">
+            {!showForm ? (
+              <motion.button
+                key="cta"
+                onClick={() => setShowForm(true)}
+                className="group inline-flex items-center gap-3 bg-accent text-accent-foreground px-10 py-5 text-sm font-semibold uppercase tracking-wider transition-all duration-300 rounded-full cursor-pointer"
+                whileHover={
+                  prefersReducedMotion
+                    ? {}
+                    : {
+                        scale: 1.08,
+                        y: -4,
+                        boxShadow: "0 16px 48px -12px hsl(var(--accent) / 0.5)",
+                        transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+                      }
+                }
+                whileTap={prefersReducedMotion ? {} : { scale: 0.96, transition: { duration: 0.15 } }}
+                exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+              >
+                <span>Start a Project</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </motion.button>
+            ) : (
+              <motion.div
+                key="form"
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                className="w-full max-w-md bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-8 relative"
+              >
+                {/* Close button */}
+                <button
+                  onClick={() => setShowForm(false)}
+                  className="absolute top-4 right-4 text-primary-foreground/50 hover:text-primary-foreground transition-colors cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <h3
+                  className="text-xl font-bold text-primary-foreground mb-6"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  Reach out to us
+                </h3>
+
+                {/* Action buttons */}
+                <div className="flex flex-col gap-3">
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-3 bg-[hsl(142,70%,45%)] text-white px-6 py-3.5 text-sm font-semibold rounded-full hover:opacity-90 transition-opacity"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Send Message on WhatsApp
+                  </a>
+                  <a
+                    href={emailLink}
+                    className="inline-flex items-center justify-center gap-3 bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold rounded-full hover:opacity-90 transition-opacity"
+                  >
+                    <Mail className="w-4 h-4" />
+                    Email
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
         </motion.div>
       </div>
     </section>

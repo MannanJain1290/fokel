@@ -11,7 +11,11 @@ const AnimatedWord = ({
   delay: number;
 }) => {
   return (
+<<<<<<< HEAD
     <span className="inline-block overflow-hidden px-0.5 py-2">
+=======
+    <span className="inline-block overflow-hidden">
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
       <motion.span
         className="inline-block"
         initial={{ y: "100%", opacity: 0 }}
@@ -110,7 +114,11 @@ const Hero = () => {
               <AnimatedWord delay={0.9}>Brand</AnimatedWord>
               <br />
               <AnimatedWord delay={1.0}>Into</AnimatedWord>{" "}
+<<<<<<< HEAD
               <span className="inline-block overflow-hidden px-0.5 py-2">
+=======
+              <span className="inline-block overflow-hidden">
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
                 <motion.span
                   className="inline-block italic font-normal text-accent"
                   initial={{ y: "100%", opacity: 0, filter: "blur(10px)" }}
@@ -146,7 +154,11 @@ const Hero = () => {
               >
                 <Link
                   to="/#contact"
+<<<<<<< HEAD
                   className="inline-block bg-orange-500 text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider rounded-full hover:bg-orange-600 transition-colors"
+=======
+                  className="inline-block bg-foreground text-background px-8 py-4 text-sm font-semibold uppercase tracking-wider rounded-full hover:opacity-90 transition-opacity"
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
                 >
                   Get in touch
                 </Link>
@@ -176,6 +188,7 @@ const Hero = () => {
                 filter: useTransform(videoBlur, (v) => `blur(${v}px)`),
               }}
             >
+<<<<<<< HEAD
               {/* Outer wrapper with overflow hidden for clean edges */}
               <div className="absolute inset-0 rounded-[32px] overflow-hidden">
                 {/* Glow behind video */}
@@ -209,6 +222,76 @@ const Hero = () => {
                   />
                 </motion.div>
               </div>
+=======
+              {/* Animated glow effect behind video */}
+              <motion.div
+                className="absolute -inset-4 bg-gradient-to-br from-accent/40 via-accent/20 to-transparent rounded-[40px] -z-10"
+                style={{
+                  opacity: glowOpacity,
+                  filter: useTransform(shadowBlur, (v) => `blur(${v}px)`),
+                  scale: useTransform(smoothProgress, [0, 0.3], [1, 1.1]),
+                }}
+              />
+              
+              <motion.div
+                className="w-full h-full overflow-hidden"
+                initial={{ clipPath: "inset(100% 0 0 0)", borderRadius: 24 }}
+                animate={{ clipPath: "inset(0% 0 0 0)" }}
+                transition={{ 
+                  duration: 1.2, 
+                  delay: 1.0, 
+                  ease: [0.65, 0, 0.35, 1] 
+                }}
+                style={{ 
+                  borderRadius: videoBorderRadius,
+                  boxShadow: useTransform(
+                    [shadowBlur, shadowSpread, smoothProgress],
+                    ([blur, spread, progress]) => 
+                      `0 ${25 + Number(progress) * 20}px ${blur}px ${spread}px rgba(0, 0, 0, 0.3), 0 0 ${Number(blur) * 0.5}px rgba(var(--accent-rgb, 139, 92, 246), ${0.15 + Number(progress) * 0.1})`
+                  ),
+                }}
+              >
+                <video
+                  src={heroVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+              
+              {/* Decorative animated border with scroll effect */}
+              <motion.div
+                className="absolute -inset-2 border-2 border-accent/30 pointer-events-none"
+                initial={{ opacity: 0, scale: 0.9, borderRadius: 32 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 1.4 }}
+                style={{ 
+                  borderRadius: useTransform(smoothProgress, [0, 0.5], [32, 68]),
+                  borderColor: useTransform(smoothProgress, [0, 0.3], ["rgba(var(--accent-rgb, 139, 92, 246), 0.3)", "rgba(var(--accent-rgb, 139, 92, 246), 0.5)"]),
+                  scale: useTransform(smoothProgress, [0, 0.3, 0.5], [1, 1.05, 0.95]),
+                }}
+              />
+              
+              {/* Floating particles effect */}
+              <motion.div
+                className="absolute -top-6 -right-6 w-3 h-3 rounded-full bg-accent/60"
+                style={{
+                  y: useTransform(smoothProgress, [0, 0.5], [0, -30]),
+                  opacity: useTransform(smoothProgress, [0, 0.3, 0.5], [0, 1, 0]),
+                  scale: useTransform(smoothProgress, [0, 0.3], [0.5, 1]),
+                }}
+              />
+              <motion.div
+                className="absolute -bottom-4 -left-4 w-2 h-2 rounded-full bg-accent/40"
+                style={{
+                  y: useTransform(smoothProgress, [0, 0.5], [0, -20]),
+                  opacity: useTransform(smoothProgress, [0, 0.2, 0.5], [0, 1, 0]),
+                  scale: useTransform(smoothProgress, [0.1, 0.3], [0.5, 1]),
+                }}
+              />
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
             </motion.div>
           </div>
         </div>

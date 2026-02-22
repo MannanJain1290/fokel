@@ -55,7 +55,11 @@ const slideVariants = {
 };
 
 // Auto-play duration in ms
+<<<<<<< HEAD
 const AUTO_PLAY_INTERVAL = 3000;
+=======
+const AUTO_PLAY_INTERVAL = 6000;
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
 
 const Testimonials = () => {
   const ref = useRef(null);
@@ -205,7 +209,11 @@ const Testimonials = () => {
                   className="absolute inset-0"
                 >
                   <motion.p 
+<<<<<<< HEAD
                     className="text-base md:text-lg lg:text-xl font-medium leading-relaxed text-primary-foreground/90 mb-8"
+=======
+                    className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed text-primary-foreground mb-10"
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.1 }}

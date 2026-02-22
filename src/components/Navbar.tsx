@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+<<<<<<< HEAD
 import logo from "@/assets/fokel-logo.png";
+=======
+import logo from "@/assets/logo.png";
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -201,6 +205,7 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
+<<<<<<< HEAD
           className="md:hidden w-10 h-10 flex items-center justify-center"
           aria-label="Toggle menu"
           whileTap={{ scale: 0.9 }}
@@ -225,6 +230,27 @@ const Navbar = () => {
               style={{ transformOrigin: "center" }}
             />
           </div>
+=======
+          className="md:hidden flex flex-col gap-1.5 p-2 relative"
+          aria-label="Toggle menu"
+          whileTap={{ scale: 0.9 }}
+        >
+          <motion.span
+            animate={isOpen ? { rotate: 45, y: 6, backgroundColor: "hsl(var(--accent))" } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="block w-6 h-0.5 bg-foreground origin-center"
+          />
+          <motion.span
+            animate={isOpen ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
+            transition={{ duration: 0.2 }}
+            className="block w-6 h-0.5 bg-foreground"
+          />
+          <motion.span
+            animate={isOpen ? { rotate: -45, y: -6, backgroundColor: "hsl(var(--accent))" } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="block w-6 h-0.5 bg-foreground origin-center"
+          />
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
         </motion.button>
       </div>
 

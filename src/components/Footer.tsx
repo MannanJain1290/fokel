@@ -1,6 +1,10 @@
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
+<<<<<<< HEAD
 import logoWhite from "@/assets/fokel-logo-black.png";
+=======
+import logoWhite from "@/assets/logo-white.png";
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
 
 const Footer = () => {
   const ref = useRef(null);
@@ -92,14 +96,22 @@ const Footer = () => {
             <div className="flex flex-col gap-3">
               {[
                 { label: "info@fokelworks.com", href: "mailto:info@fokelworks.com" },
+<<<<<<< HEAD
                 { label: "LinkedIn", href: "https://www.linkedin.com/company/fokelworks/about/", external: true },
                 { label: "Instagram", href: "https://www.instagram.com/fokelworks", external: true },
+=======
+                { label: "LinkedIn", href: "#" },
+                { label: "Instagram", href: "#" },
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
               ].map((item, i) => (
                 <motion.a
                   key={item.label}
                   href={item.href}
+<<<<<<< HEAD
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
+=======
+>>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
                   initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration, delay: delay(0.25 + i * 0.08) }}

@@ -165,20 +165,6 @@ const OurApproach = () => {
                   </p>
                 </div>
 
-                {/* Arrow indicator */}
-                <motion.div
-                  className="relative z-10 mt-6 flex items-center gap-2"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{
-                    opacity: isHovered ? 1 : 0,
-                    x: isHovered ? 0 : -10,
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <span className="text-sm font-medium text-accent">Learn more</span>
-                  <ArrowUpRight className="w-4 h-4 text-accent" />
-                </motion.div>
-
                 {/* Decorative corner accent */}
                 <motion.div
                   className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-accent/10"

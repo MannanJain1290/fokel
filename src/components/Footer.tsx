@@ -1,128 +1,140 @@
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import logoWhite from "@/assets/fokel-logo-black.png";
+import { ArrowRight, Mail, Linkedin, Instagram } from "lucide-react";
+import logo from "@/assets/fokel-logo.png";
 
 const Footer = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const prefersReducedMotion = useReducedMotion();
 
-  const duration = prefersReducedMotion ? 0 : 0.8;
-  const delay = (d: number) => (prefersReducedMotion ? 0 : d);
+  const scrollToSection = (href: string) => {
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <footer
-      className="relative bg-foreground text-background py-16 overflow-hidden"
+      className="relative bg-foreground text-background overflow-hidden"
       ref={ref}
     >
-      <motion.div
-        className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl pointer-events-none"
-        animate={
-          prefersReducedMotion
-            ? {}
-            : {
-                scale: [1, 1.05, 1],
-                y: [0, -12, 0],
-              }
-        }
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration }}
-          className="grid md:grid-cols-3 gap-12"
-        >
-          <div>
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+          <div className="lg:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration, delay: delay(0.05) }}
+              transition={{ duration: 0.6 }}
             >
-              <img src={logoWhite} alt="Fokel" className="h-8 w-auto" />
+              <img src={logo} alt="Fokel" className="h-10 w-auto mb-6" />
+              <h3 className="text-2xl lg:text-3xl font-bold text-background leading-tight mb-4" style={{ fontFamily: "var(--font-heading)" }}>
+                Ready to bring your brand into <span className="text-accent">focus</span>?
+              </h3>
+              <p className="text-background/60 leading-relaxed max-w-md mb-8">
+                Let's discuss how we can transform your digital presence and make your brand the undisputed authority in your niche.
+              </p>
+              <button
+                onClick={() => scrollToSection('#contact')}
+                className="btn-primary"
+              >
+                Start a Project
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </motion.div>
+          </div>
 
+          <div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration, delay: delay(0.15) }}
-              className="mt-4 text-background/60 leading-relaxed text-sm"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-sm font-semibold uppercase tracking-wider text-background/40 mb-6"
             >
-              A digital studio specializing in digital marketing, web design, and
-              digital strategy for ambitious businesses.
-            </motion.p>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wider mb-4">
               Navigation
-            </p>
-            <div className="flex flex-col gap-3">
+            </motion.p>
+            <div className="flex flex-col gap-4">
               {["About", "Services", "Work", "Contact"].map((link, i) => (
-                <motion.a
+                <motion.button
                   key={link}
-                  href={`#${link.toLowerCase()}`}
+                  onClick={() => scrollToSection(`#${link.toLowerCase()}`)}
                   initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration, delay: delay(0.2 + i * 0.08) }}
-                  whileHover={
-                    prefersReducedMotion
-                      ? {}
-                      : { x: 6, color: "hsl(var(--background))" }
-                  }
-                  className="relative text-sm text-background/60 transition-all duration-300"
+                  transition={{ duration: 0.6, delay: 0.15 + i * 0.05 }}
+                  className="text-left text-background/70 hover:text-accent transition-colors duration-300"
                 >
                   {link}
-                </motion.a>
+                </motion.button>
               ))}
             </div>
           </div>
 
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wider mb-4">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-sm font-semibold uppercase tracking-wider text-background/40 mb-6"
+            >
               Connect
-            </p>
-            <div className="flex flex-col gap-3">
-              {[
-                { label: "info@fokelworks.com", href: "mailto:info@fokelworks.com" },
-                { label: "LinkedIn", href: "https://www.linkedin.com/company/fokelworks/about/", external: true },
-                { label: "Instagram", href: "https://www.instagram.com/fokelworks", external: true },
-              ].map((item, i) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration, delay: delay(0.25 + i * 0.08) }}
-                  whileHover={
-                    prefersReducedMotion
-                      ? {}
-                      : { x: 6, color: "hsl(var(--background))" }
-                  }
-                  className="text-sm text-background/60 transition-all duration-300"
-                >
-                  {item.label}
-                </motion.a>
-              ))}
+            </motion.p>
+            <div className="flex flex-col gap-4">
+              <motion.a
+                href="mailto:info@fokelworks.com"
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="inline-flex items-center gap-3 text-background/70 hover:text-accent transition-colors duration-300"
+              >
+                <Mail className="w-5 h-5" />
+                info@fokelworks.com
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/company/fokelworks/about/"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-flex items-center gap-3 text-background/70 hover:text-accent transition-colors duration-300"
+              >
+                <Linkedin className="w-5 h-5" />
+                LinkedIn
+              </motion.a>
+              <motion.a
+                href="https://www.instagram.com/fokelworks"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.25 }}
+                className="inline-flex items-center gap-3 text-background/70 hover:text-accent transition-colors duration-300"
+              >
+                <Instagram className="w-5 h-5" />
+                Instagram
+              </motion.a>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration, delay: delay(0.5) }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-xs text-background/40">
+          <p className="text-sm text-background/40">
             © 2026 Fokel. All rights reserved.
           </p>
-          <p className="text-xs text-background/40">
-            Bringing brands into focus.
+          <p className="text-sm text-background/40">
+            Crafted with precision in India
           </p>
         </motion.div>
       </div>

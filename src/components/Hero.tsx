@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
 
 const AnimatedWord = ({ 
@@ -11,7 +12,7 @@ const AnimatedWord = ({
   delay: number;
 }) => {
   return (
-    <span className="inline-block overflow-hidden px-0.5 py-2">
+    <span className="inline-block overflow-hidden">
       <motion.span
         className="inline-block"
         initial={{ y: "100%", opacity: 0 }}
@@ -52,23 +53,12 @@ const Hero = () => {
     restDelta: 0.001
   });
 
-  const videoScale = useTransform(smoothProgress, [0, 0.5], [1, 0.75]);
-  const videoY = useTransform(smoothProgress, [0, 0.5], [0, 50]);
-  const videoX = useTransform(smoothProgress, [0, 0.5], [0, 0]);
+  const videoScale = useTransform(smoothProgress, [0, 0.5], [1, 0.8]);
+  const videoY = useTransform(smoothProgress, [0, 0.5], [0, 80]);
   const videoOpacity = useTransform(smoothProgress, [0, 0.6, 0.8], [1, 1, 0]);
-  const videoBorderRadius = useTransform(smoothProgress, [0, 0.5], [24, 40]);
   
-  const videoRotateY = useTransform(smoothProgress, [0, 0.5], [0, -3]);
-  const videoRotateX = useTransform(smoothProgress, [0, 0.5], [0, 5]);
-  
-  const shadowBlur = useTransform(smoothProgress, [0, 0.3, 0.6], [30, 60, 20]);
-  const shadowSpread = useTransform(smoothProgress, [0, 0.3], [0, 10]);
-  const glowOpacity = useTransform(smoothProgress, [0, 0.2, 0.5], [0.3, 0.6, 0]);
-  
-  const videoBlur = useTransform(smoothProgress, [0, 0.5, 0.7], [0, 0, 4]);
-
   return (
-    <section ref={sectionRef} className="min-h-screen relative bg-background overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen bg-background overflow-hidden">
       {showPageReveal && (
         <>
           <motion.div
@@ -86,11 +76,21 @@ const Hero = () => {
         </>
       )}
 
-      <div className="max-w-7xl mx-auto w-full px-4 lg:px-6 pt-24 pb-16 min-h-screen flex items-center">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end w-full">
-          <div className="flex flex-col gap-8">
+      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 pt-32 lg:pt-40 pb-20 min-h-screen flex items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
+          <div className="flex flex-col gap-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 w-fit"
+            >
+              <Sparkles className="w-4 h-4 text-accent" />
+              <span className="text-xs font-medium tracking-wide text-accent">Creative Digital Agency</span>
+            </motion.div>
+
             <h1
-              className="text-[clamp(2.8rem,6vw,5.5rem)] font-bold leading-[1] tracking-[-0.03em] text-foreground"
+              className="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] text-foreground"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <AnimatedWord delay={0.6}>We</AnimatedWord>{" "}
@@ -100,11 +100,11 @@ const Hero = () => {
               <AnimatedWord delay={0.9}>Brand</AnimatedWord>
               <br />
               <AnimatedWord delay={1.0}>Into</AnimatedWord>{" "}
-              <span className="inline-block overflow-hidden px-0.5 py-2">
+              <span className="inline-block overflow-hidden">
                 <motion.span
-                  className="inline-block italic font-normal text-accent"
-                  initial={{ y: "100%", opacity: 0, filter: "blur(10px)" }}
-                  animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                  className="inline-block text-accent"
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
                   transition={{ 
                     duration: 1, 
                     delay: 1.1,
@@ -120,91 +120,126 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed"
+              className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed"
             >
-              Helping brands and businesses drive value through creatively functional digital strategy.
+              A creative digital studio that transforms ambitious brands through strategic design, compelling storytelling, and measurable growth.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="flex flex-wrap items-center gap-4"
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
+              <Link
+                to="/#contact"
+                className="btn-primary group"
               >
-                <Link
-                  to="/#contact"
-                  className="inline-block bg-orange-500 text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider rounded-full hover:bg-orange-600 transition-colors"
+                Start a Project
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  Get in touch
-                </Link>
-              </motion.div>
+                  <ArrowRight className="w-4 h-4" />
+                </motion.span>
+              </Link>
+              <Link
+                to="/#work"
+                className="btn-ghost"
+              >
+                View our work
+              </Link>
             </motion.div>
-          </div>
 
             <motion.div
-              ref={videoContainerRef}
-              initial={{ opacity: 0, scale: 0.8, y: 60 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ 
-                duration: 1.2, 
-                delay: 0.8, 
-                ease: [0.25, 0.1, 0.25, 1] 
-              }}
-              className="relative aspect-[9/16] max-h-[75vh] w-full max-w-sm lg:max-w-md mx-auto"
-              style={{
-                scale: videoScale,
-                y: videoY,
-                x: videoX,
-                opacity: videoOpacity,
-                rotateY: videoRotateY,
-                rotateX: videoRotateX,
-                perspective: 1000,
-                filter: useTransform(videoBlur, (v) => `blur(${v}px)`),
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.7 }}
+              className="flex items-center gap-8 pt-8 border-t border-border/50"
             >
-              <div className="absolute inset-0 rounded-[32px] overflow-hidden">
-                <motion.div
-                  className="absolute inset-0 bg-accent/10"
-                  style={{
-                    opacity: glowOpacity,
-                  }}
-                />
-                
-                <motion.div
-                  className="w-full h-full"
-                  initial={{ clipPath: "inset(100% 0 0 0)" }}
-                  animate={{ clipPath: "inset(0% 0 0 0)" }}
-                  transition={{ 
-                    duration: 1.2, 
-                    delay: 1.0, 
-                    ease: [0.65, 0, 0.35, 1] 
-                  }}
-                  style={{ 
-                    borderRadius: videoBorderRadius,
-                  }}
-                >
-                  <video
-                    src={heroVideo}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
+              <div>
+                <p className="text-3xl font-bold text-foreground">20+</p>
+                <p className="text-sm text-muted-foreground">Projects Delivered</p>
+              </div>
+              <div className="w-px h-12 bg-border" />
+              <div>
+                <p className="text-3xl font-bold text-foreground">100%</p>
+                <p className="text-sm text-muted-foreground">Client Satisfaction</p>
+              </div>
+              <div className="w-px h-12 bg-border" />
+              <div>
+                <p className="text-3xl font-bold text-foreground">5+</p>
+                <p className="text-sm text-muted-foreground">Years Experience</p>
               </div>
             </motion.div>
           </div>
+
+          <motion.div
+            ref={videoContainerRef}
+            initial={{ opacity: 0, scale: 0.9, y: 60 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ 
+              duration: 1.2, 
+              delay: 0.8, 
+              ease: [0.25, 0.1, 0.25, 1] 
+            }}
+            className="relative"
+            style={{
+              scale: videoScale,
+              y: videoY,
+              opacity: videoOpacity,
+            }}
+          >
+            <div className="relative aspect-[4/5] max-h-[85vh] mx-auto">
+              <div className="absolute -inset-4 bg-gradient-to-b from-accent/20 via-transparent to-transparent rounded-[3rem] blur-2xl opacity-60" />
+              
+              <motion.div
+                className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-accent/10"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 1.5 }}
+                />
+                
+                <video
+                  src={heroVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              </motion.div>
+              
+              <motion.div
+                className="absolute -bottom-6 -right-6 bg-card rounded-2xl p-6 shadow-xl border border-border/50"
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 1.8 }}
+              >
+                <p className="text-sm font-medium text-foreground mb-1">Latest Project</p>
+                <p className="text-xs text-muted-foreground">HomeLane SEO Strategy</p>
+                <div className="mt-3 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <span className="text-xs text-muted-foreground">+98% Traffic</span>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
+      </div>
 
       <motion.div
-        className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/5 to-transparent pointer-events-none"
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.5, delay: 1.2 }}
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2 }}
       />
     </section>
   );

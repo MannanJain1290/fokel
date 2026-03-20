@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 0 0% 8%;
 
     --card: 0 0% 100%;
@@ -16,7 +16,7 @@
     --popover-foreground: 0 0% 8%;
 
     --primary: 0 0% 8%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 8%;
@@ -24,7 +24,7 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 14 100% 57%;
+    --accent: 22 100% 56%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,7 +34,7 @@
     --input: 0 0% 90%;
     --ring: 0 0% 8%;
 
-    --radius: 0rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -51,21 +51,21 @@
 
   .dark {
     --background: 0 0% 5%;
-    --foreground: 0 0% 96%;
+    --foreground: 0 0% 98%;
     --card: 0 0% 8%;
-    --card-foreground: 0 0% 96%;
+    --card-foreground: 0 0% 98%;
     --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 0 0% 96%;
-    --primary-foreground: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 5%;
     --secondary: 0 0% 14%;
-    --secondary-foreground: 0 0% 96%;
+    --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14%;
     --muted-foreground: 0 0% 55%;
-    --accent: 14 100% 57%;
+    --accent: 22 100% 56%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 96%;
+    --destructive-foreground: 0 0% 98%;
     --border: 0 0% 18%;
     --input: 0 0% 18%;
     --ring: 0 0% 80%;
@@ -77,17 +77,89 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: hsl(var(--accent) / 0.2);
+    color: hsl(var(--foreground));
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .gradient-mask-b {
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+
+  .gradient-mask-l {
+    mask-image: linear-gradient(to left, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 80%, transparent 100%);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-8 py-4 text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border border-foreground/20 text-foreground px-8 py-4 text-sm font-medium rounded-full transition-all duration-300 hover:bg-foreground hover:text-background hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 text-foreground px-6 py-3 text-sm font-medium transition-all duration-300 hover:text-accent;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold tracking-[0.25em] uppercase text-accent;
+  }
+
+  .heading-display {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-[-0.03em];
+  }
+
+  .heading-section {
+    @apply text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-[-0.02em];
+  }
+
+  .heading-card {
+    @apply text-xl md:text-2xl font-semibold tracking-tight;
+  }
+
+  .body-large {
+    @apply text-lg md:text-xl leading-relaxed text-muted-foreground;
+  }
+
+  .body-regular {
+    @apply text-base leading-relaxed text-muted-foreground;
+  }
+
+  .card-premium {
+    @apply relative bg-card border border-border/50 rounded-2xl p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5;
+  }
+
+  .link-hover {
+    @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full;
   }
 }

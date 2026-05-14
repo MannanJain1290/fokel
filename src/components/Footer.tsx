@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Mail, Linkedin, Instagram } from "lucide-react";
-import logo from "@/assets/fokel-logo.png";
+import { ArrowRight, Mail, Linkedin, Instagram, MapPin, Phone } from "lucide-react";
+import logo from "@/assets/logo-white.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -94,9 +94,28 @@ const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.15 }}
                 className="inline-flex items-center gap-3 text-background/70 hover:text-accent transition-colors duration-300"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-5 h-5 shrink-0" />
                 info@fokelworks.com
               </motion.a>
+              <motion.a
+                href="tel:+918950483522"
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.17 }}
+                className="inline-flex items-center gap-3 text-background/70 hover:text-accent transition-colors duration-300"
+              >
+                <Phone className="w-5 h-5 shrink-0" />
+                +91 89504 83522
+              </motion.a>
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.19 }}
+                className="inline-flex items-start gap-3 text-background/70 transition-colors duration-300"
+              >
+                <MapPin className="w-5 h-5 shrink-0 mt-1" />
+                <span className="text-sm">A77, Basement, A Block,<br />East of Kailash, New Delhi 110065</span>
+              </motion.div>
               <motion.a
                 href="https://www.linkedin.com/company/fokelworks/about/"
                 target="_blank"

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
+import bgVideo from "@/assets/bg-video.mp4";
 
 const AnimatedWord = ({ 
   children, 
@@ -58,7 +59,27 @@ const Hero = () => {
   const videoOpacity = useTransform(smoothProgress, [0, 0.6, 0.8], [1, 1, 0]);
   
   return (
-    <section ref={sectionRef} className="relative min-h-screen bg-background overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen overflow-hidden">
+      {/* Full-screen background video */}
+      <video
+        src={bgVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
+      />
+      {/* Dark overlay for readability */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.65) 100%)",
+          zIndex: 1,
+        }}
+      />
+
       {showPageReveal && (
         <>
           <motion.div
@@ -76,21 +97,21 @@ const Hero = () => {
         </>
       )}
 
-      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 pt-32 lg:pt-40 pb-20 min-h-screen flex items-center">
+      <div className="relative max-w-7xl mx-auto w-full px-6 lg:px-12 pt-32 lg:pt-40 pb-20 min-h-screen flex items-center" style={{ zIndex: 2 }}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
           <div className="flex flex-col gap-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 w-fit"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/40 w-fit backdrop-blur-sm"
             >
               <Sparkles className="w-4 h-4 text-accent" />
               <span className="text-xs font-medium tracking-wide text-accent">Creative Digital Agency</span>
             </motion.div>
 
             <h1
-              className="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] text-foreground"
+              className="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] text-white"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <AnimatedWord delay={0.6}>We</AnimatedWord>{" "}
@@ -120,7 +141,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed"
+              className="text-lg md:text-xl text-white/80 max-w-lg leading-relaxed"
             >
               A creative digital studio that transforms ambitious brands through strategic design, compelling storytelling, and measurable growth.
             </motion.p>
